@@ -1,5 +1,6 @@
 {
   "name": "magicboard",
+  "description": "so magic, much wow",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
