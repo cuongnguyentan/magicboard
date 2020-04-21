@@ -1,0 +1,11 @@
+@import "~assets/scss/colors";
+
+.cell {
+  border: 1px solid $black;
+  box-sizing: border-box;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+}

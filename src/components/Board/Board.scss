@@ -1,0 +1,10 @@
+@import "~assets/scss/colors";
+
+.board {
+  line-height: 0;
+  box-shadow: 0 0 0 1px $black;
+
+  .cell {
+    display: inline-block;
+  }
+}
