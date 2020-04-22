@@ -97,7 +97,7 @@ const Board = ({ row, col, width }) => {
     /* eslint-disable react/no-this-in-sfc */
     Draggable.create('.cell', {
       type: 'x,y',
-      edgeResistance: 0.65,
+      edgeResistance: 0.8,
       bounds: '.board',
       inertia: true,
       snap: {
@@ -139,7 +139,9 @@ const Board = ({ row, col, width }) => {
   useEffect(() => {
     if (!row || !col) return;
 
-    const colors = palette('tol-dv', row * col);
+    const scheme = ['tol-dv', 'tol-rainbow', 'tol-sq', 'mpn65'];
+    const i = Math.floor(Math.random() * (scheme.length - 1));
+    const colors = palette(scheme[i], row * col);
 
     const c = [];
     let k = 0;
