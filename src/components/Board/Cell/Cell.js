@@ -1,16 +1,12 @@
-import React, { forwardRef, useReducer, useEffect } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { TweenMax } from 'gsap';
 
 import { DEFAULT_COLOR } from 'consts';
 
 import './Cell.scss';
-import { Tween } from 'gsap/gsap-core';
 
-const Cell = forwardRef(({ size, color, className, id, render }, cellRef) => {
-  const [, forceUpdate] = useReducer((x) => x + 1, 0);
-
+const Cell = forwardRef(({ size, color, className, id }, cellRef) => {
   const cellStyle = {
     width: size,
     height: size,
@@ -33,7 +29,6 @@ Cell.propTypes = {
   color: PropTypes.string,
   className: PropTypes.string,
   id: PropTypes.string,
-  render: PropTypes.string
 };
 
 Cell.defaultProps = {
@@ -41,7 +36,6 @@ Cell.defaultProps = {
   color: DEFAULT_COLOR,
   className: '',
   id: '',
-  render: null
 };
 
 export default Cell;

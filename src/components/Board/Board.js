@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { gsap, TweenMax } from 'gsap';
 import { Draggable, InertiaPlugin } from 'gsap/all';
-import { v4 as uuidv4 } from 'uuid';
 import palette from 'google-palette';
 
 import { swapArrayElements } from 'helpers';
@@ -18,7 +17,6 @@ const Board = ({ row, col, width }) => {
   const lastCellRef = useRef(null);
   const [cells, setCells] = useState([]);
   const [cellSize, setCellSize] = useState(0);
-  const [renderId, setRenderId] = useState(null);
 
   const boardStyle = {
     width
@@ -140,8 +138,8 @@ const Board = ({ row, col, width }) => {
     if (!row || !col) return;
 
     const scheme = ['tol-dv', 'tol-rainbow', 'tol-sq', 'mpn65'];
-    const i = Math.floor(Math.random() * (scheme.length - 1));
-    const colors = palette(scheme[i], row * col);
+    const ii = Math.floor(Math.random() * (scheme.length - 1));
+    const colors = palette(scheme[ii], row * col);
 
     const c = [];
     let k = 0;
@@ -164,14 +162,10 @@ const Board = ({ row, col, width }) => {
     setCellSize(s);
   }, [width, row]);
 
-  useEffect(() => {
-    setRenderId(uuidv4());
-  }, [cells]);
-
   return (
     <div className="board" style={boardStyle} ref={boardRef}>
       { cells.map((cell, i) => (
-        <Cell size={cellSize} id={`cell-${cell.index}`} color={cell.color} key={cell.index} ref={((i === cells.length - 1) ? lastCellRef : null)} render={renderId} />
+        <Cell size={cellSize} id={`cell-${cell.index}`} color={cell.color} key={cell.index} ref={((i === cells.length - 1) ? lastCellRef : null)} />
       )) }
     </div>
   );
