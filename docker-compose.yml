@@ -1,0 +1,13 @@
+services:
+  cuongxoi-magicboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cuongxoi-magicboard
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - /usr/src/app/build
+    ports:
+      - ${PORT}:${PORT}
+    command: npm run start
